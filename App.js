@@ -1,21 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Wing's sample React-Native App</Text>
-      </View>
-    );
-  }
-}
+import LoginScreen from './Components/LoginScreen';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = () => (
+  <LoginScreen />
+);
+
+export { App as default };
