@@ -1,9 +1,9 @@
 import React from 'react';
 
-import LoginScreen from './Components/LoginScreen';
+import AppContainer from './Components/AuthAndAppSwitchNavigator';
 
 const App = () => (
-  <LoginScreen />
+  <AppContainer />
 );
 
 export { App as default };

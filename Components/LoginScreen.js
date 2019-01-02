@@ -16,6 +16,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 const BG_IMAGE = require('../assets/images/bg_screen.jpg');
+const LOGO_IMAGE = require('../assets/images/logo47.png');
 
 const styles = StyleSheet.create({
   container: {
@@ -31,27 +32,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   loginView: {
-    marginTop: 150,
-    width: 250,
-    height: 450,
-  },
-  loginTitle: {
     flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    marginTop: 30,
-    marginBottom: 25,
+    marginVertical: 50,
+    marginHorizontal: 50,
   },
-  checkBoxView: {
-    flex: 1,
-    backgroundColor: 'transparent',
-  },
-  loginInput: {
+  loginHeader: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 50,
-    marginBottom: 15,
+  },
+  loginBody: {
+    flex: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  loginFooter: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
@@ -81,7 +79,8 @@ export default class LoginScreen extends Component {
 
   signInAsync = async () => {
     await AsyncStorage.setItem('userToken', 'abc');
-    // TODO: navigate here
+    const { navigation } = this.props;
+    navigation.navigate('App');
   };
 
   submitLoginCrendentials() {
@@ -102,8 +101,10 @@ export default class LoginScreen extends Component {
         <ImageBackground source={BG_IMAGE} style={styles.bgImage}>
           {appResourceLoaded ? (
             <View style={styles.loginView}>
-              <View style={styles.loginTitle} />
-              <View style={styles.loginInput}>
+              <View style={styles.loginHeader}>
+                <Image style={{ width: 200, height: 200, marginTop: 30 }} source={LOGO_IMAGE} />
+              </View>
+              <View style={styles.loginBody}>
                 <Input
                   leftIcon={(
                     <Icon
@@ -123,7 +124,7 @@ export default class LoginScreen extends Component {
                   autoCorrect={false}
                   keyboardType="email-address"
                   returnKeyType="next"
-                  ref={input => (this.emailInput = input)}
+                  ref={(input) => { this.emailInput = input; }}
                   onSubmitEditing={() => {
                     this.setState({ emailValid: LoginScreen.validateEmail(email) });
                     this.passwordInput.focus();
@@ -154,12 +155,10 @@ export default class LoginScreen extends Component {
                   autoCorrect={false}
                   keyboardType="default"
                   returnKeyType="done"
-                  ref={input => (this.passwordInput = input)}
+                  ref={(input) => { this.passwordInput = input; }}
                   blurOnSubmit
                   placeholderTextColor="white"
                 />
-              </View>
-              <View style={styles.checkBoxView}>
                 <CheckBox
                   title="I have read and agree to the Terms and Conditions."
                   // checkedIcon='dot-circle-o'
@@ -178,25 +177,36 @@ export default class LoginScreen extends Component {
                   }}
                 />
               </View>
-              <Button
-                title="LOG IN"
-                activeOpacity={1}
-                underlayColor="transparent"
-                onPress={this.signInAsync}
-                loading={showLoading}
-                loadingProps={{ size: 'small', color: 'white' }}
-                disabled={!emailValid && password.length < 8}
-                buttonStyle={{
-                  height: 50,
-                  width: 250,
-                  backgroundColor: 'transparent',
-                  borderWidth: 2,
-                  borderColor: 'white',
-                  borderRadius: 30,
-                }}
-                containerStyle={{ marginVertical: 10 }}
-                titleStyle={{ fontWeight: 'bold', color: 'white' }}
-              />
+              <View style={styles.loginFooter}>
+                <Button
+                  title="LOG IN"
+                  activeOpacity={1}
+                  underlayColor="transparent"
+                  onPress={this.signInAsync}
+                  loading={showLoading}
+                  loadingProps={{ size: 'small', color: 'white' }}
+                  disabled={!emailValid || password.length < 1 || !checked}
+                  buttonStyle={{
+                    height: 50,
+                    width: 250,
+                    backgroundColor: 'transparent',
+                    borderWidth: 2,
+                    borderColor: 'white',
+                    borderRadius: 30,
+                  }}
+                  disabledStyle={{
+                    height: 50,
+                    width: 250,
+                    backgroundColor: 'transparent',
+                    borderWidth: 2,
+                    borderColor: 'grey',
+                    borderRadius: 30,
+                  }}
+                  containerStyle={{ marginVertical: 10 }}
+                  titleStyle={{ fontWeight: 'bold', color: 'white' }}
+                  disabledTitleStyle={{ fontWeight: 'bold', color: 'grey' }}
+                />
+              </View>
             </View>
           ) : (
             <Text>Loading...</Text>
