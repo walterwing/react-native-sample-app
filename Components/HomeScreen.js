@@ -43,8 +43,9 @@ export default class HomeScreen extends Component {
         iconStyle={{ paddingRight: 10 }}
         // TODO: update this function
         onPress={async () => {
-          await AsyncStorage.clear();
-          navigation.navigate('Auth');
+          // await AsyncStorage.clear();
+          // navigation.navigate('Auth');
+          navigation.navigate('Profile');
         }}
       />
     ),
