@@ -16,7 +16,7 @@ import {
 } from 'react-native-elements';
 import NumericInput from 'react-native-numeric-input';
 
-import { products } from './CommonConstants';
+import products from './CommonConstants';
 
 const styles = StyleSheet.create({
   list: {
@@ -28,245 +28,251 @@ const styles = StyleSheet.create({
 
 const dummySearchBarProps = {
   showLoading: true,
-  onFocus: () => console.log('focus'),
-  onBlur: () => console.log('blur'),
-  onCancel: () => console.log('cancel'),
-  onClearText: () => console.log('cleared'),
-  onChangeText: (text) => console.log('text:', text),
+  onBlur: () => {
+    Alert.alert(
+      'TODO',
+      'Handle search input here.',
+      [{ text: 'OK' }],
+      { cancelable: true },
+    );
+  },
 };
 
 const categories = [
   {
+    id: 0,
     label: 'All Categories',
     value: 'all',
   },
   {
+    id: 1,
     label: 'Clothing',
     value: 'clothing',
   },
   {
+    id: 2,
     label: 'Garden',
     value: 'garden',
   },
   {
+    id: 3,
     label: 'Electronics',
     value: 'electronics',
   },
   {
+    id: 4,
     label: 'Sports',
     value: 'sports',
   },
   {
+    id: 5,
     label: 'Books',
     value: 'books',
   },
   {
+    id: 6,
     label: 'Music',
     value: 'music',
   },
   {
+    id: 7,
     label: 'Movies',
     value: 'movies',
   },
   {
+    id: 8,
     label: 'Food',
     value: 'food',
   },
   {
+    id: 9,
     label: 'Specials',
     value: 'specials',
   },
 ];
 
-class ProductSearchIcon extends Component {
-  render() {
-    return (
-      <Icon
-        name="search"
-        type="EvilIcons"
-        onPress={() => console.log('searching product...')}
-      />
-    );
-  }
-}
+const ProductSearchIcon = () => (
+  <Icon
+    name="search"
+    type="EvilIcons"
+    onPress={() => {
+      Alert.alert(
+        'TODO',
+        'Search function not implemented yet.',
+        [{ text: 'OK' }],
+        { cancelable: true },
+      );
+    }}
+  />
+);
 
-class ProductSearchTitle extends Component {
-  render() {
-    return (
-      <View>
-        <SearchBar
-          searchIcon={<ProductSearchIcon />}
-          placeholder="Search products"
-          platform="android"
-          {...dummySearchBarProps}
-        />
-      </View>
-    );
-  }
-}
+const ProductSearchTitle = () => (
+  <View>
+    <SearchBar
+      searchIcon={<ProductSearchIcon />}
+      placeholder="Search products"
+      platform="android"
+      {...dummySearchBarProps}
+    />
+  </View>
+);
 
-class ProductTitle extends Component {
-  render() {
-    const { product } = this.props;
+const ProductTitle = ({ product, navigation }) => (
+  <TouchableOpacity
+    onPress={() => navigation.navigate('ProductDetails', { code: product.code })}
+  >
+    <Text
+      style={{
+        flexWrap: 'wrap',
+        fontSize: 16,
+        color: 'rgba(0, 0, 0, 0.54)',
+      }}
+    >
+      {product.code}
+    </Text>
+    <Text style={{ flexWrap: 'wrap', fontSize: 16, marginTop: 5 }}>
+      {product.name}
+    </Text>
+  </TouchableOpacity>
+);
 
-    return (
-      <TouchableOpacity
-        onPress={() =>
-          this.props.navigation.navigate('ProductDetails', {
-            code: product.code,
-          })
-        }
+const ProductSubTitle = () => (
+  <View style={{ flexDirection: 'row' }}>
+    <Icon
+      name="md-heart-empty"
+      type="ionicon"
+      size={25}
+      onPress={() => {
+        Alert.alert(
+          'TODO',
+          'Favorites not implemented yet.',
+          [{ text: 'OK' }],
+          { cancelable: true },
+        );
+      }}
+    />
+    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+      <Text style={{ marginLeft: 10, fontSize: 14, color: 'grey' }}>
+        Availability: In stock
+      </Text>
+    </View>
+  </View>
+);
+
+const ProductItem = ({ product, navigation, handleAddOrderItem }) => (
+  <ScrollView>
+    <View
+      style={{
+        backgroundColor: 'white',
+        padding: 16,
+      }}
+    >
+      <View
+        style={{
+          flexDirection: 'row',
+          flex: 2,
+          backgroundColor: 'transparent',
+        }}
       >
-        <Text
-          style={{
-            flexWrap: 'wrap',
-            fontSize: 16,
-            color: 'rgba(0, 0, 0, 0.54)',
-          }}
-        >
-          {product.code}
-        </Text>
-        <Text style={{ flexWrap: 'wrap', fontSize: 16, marginTop: 5 }}>
-          {product.name}
-        </Text>
-      </TouchableOpacity>
-    );
-  }
-}
-
-class ProductSubTitle extends Component {
-  render() {
-    return (
-      <View style={{ flexDirection: 'row' }}>
-        <Icon
-          name="md-heart-empty"
-          type="ionicon"
-          size={25}
-          onPress={() => console.log('hello heart')}
-        />
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Text style={{ marginLeft: 10, fontSize: 14, color: 'grey' }}>
-            Availability: In stock
-          </Text>
+        <View style={{ flex: 2, backgroundColor: 'transparent' }}>
+          <ProductTitle
+            navigation={navigation}
+            product={product}
+          />
         </View>
-      </View>
-    );
-  }
-}
-
-class ProductItem extends Component {
-  render() {
-    return (
-      <ScrollView>
         <View
           style={{
-            backgroundColor: 'white',
-            padding: 16,
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
-          <View
-            style={{
-              flexDirection: 'row',
-              flex: 2,
-              backgroundColor: 'transparent',
+          <Button
+            title="Add"
+            titleStyle={{ fontWeight: 'bold', fontSize: 16 }}
+            linearGradientProps={{
+              colors: ['#FF9800', '#F44336'],
+              start: [1, 0],
+              end: [0.2, 0],
             }}
-          >
-            <View style={{ flex: 2, backgroundColor: 'transparent' }}>
-              <ProductTitle
-                navigation={this.props.navigation}
-                product={this.props.product}
-              />
-            </View>
-            <View
-              style={{
-                flex: 1,
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <Button
-                title="Add"
-                titleStyle={{ fontWeight: 'bold', fontSize: 16 }}
-                linearGradientProps={{
-                  colors: ['#FF9800', '#F44336'],
-                  start: [1, 0],
-                  end: [0.2, 0],
-                }}
-                buttonStyle={{
-                  borderWidth: 0,
-                  borderColor: 'transparent',
-                  borderRadius: 20,
-                }}
-                containerStyle={{ marginBottom: 10, height: 30, width: 100 }}
-                iconRight
-                iconContainerStyle={{ marginLeft: 5 }}
-                onPress={this.props.handleAddOrderItem}
-              />
-            </View>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              flex: 1,
-              justifyContent: 'center',
-              marginTop: 10,
+            buttonStyle={{
+              borderWidth: 0,
+              borderColor: 'transparent',
+              borderRadius: 20,
             }}
-          >
-            <View style={{ flex: 2, backgroundColor: 'transparent' }}>
-              <ProductSubTitle />
-            </View>
-            <View style={{ flex: 1, alignItems: 'center' }}>
-            <NumericInput
-              // onChange={value => this.setState({ value })}
-              onChange={() => console.log('---todo: implement numric input')}
-              totalWidth={100}
-              totalHeight={30}
-              iconSize={20}
-              step={1}
-              valueType="integer"
-              rounded
-              textColor="#B0228C"
-              iconStyle={{ color: 'white' }}
-              rightButtonBackgroundColor="#EA3788"
-              leftButtonBackgroundColor="#E56B70"
-            />
-            </View>
-          </View>
+            containerStyle={{ marginBottom: 10, height: 30, width: 100 }}
+            iconRight
+            iconContainerStyle={{ marginLeft: 5 }}
+            onPress={handleAddOrderItem}
+          />
         </View>
-        <Divider style={{ height: 1 }} />
-      </ScrollView>
-    );
-  }
-}
+      </View>
+      <View
+        style={{
+          flexDirection: 'row',
+          flex: 1,
+          justifyContent: 'center',
+          marginTop: 10,
+        }}
+      >
+        <View style={{ flex: 2, backgroundColor: 'transparent' }}>
+          <ProductSubTitle />
+        </View>
+        <View style={{ flex: 1, alignItems: 'center' }}>
+          <NumericInput
+            // onChange={value => this.setState({ value })}
+            onChange={() => {
+              Alert.alert(
+                'TODO',
+                'Numeric input not implemented yet.',
+                [{ text: 'OK' }],
+                { cancelable: true },
+              );
+            }}
+            totalWidth={100}
+            totalHeight={30}
+            iconSize={20}
+            step={1}
+            valueType="integer"
+            rounded
+            textColor="#B0228C"
+            iconStyle={{ color: 'white' }}
+            rightButtonBackgroundColor="#EA3788"
+            leftButtonBackgroundColor="#E56B70"
+          />
+        </View>
+      </View>
+    </View>
+    <Divider style={{ height: 1 }} />
+  </ScrollView>
+);
 
 export default class ProductsScreen extends Component {
-  static navigationOptions = ({ navigation }) => {
-    return {
-      headerTitle: <ProductSearchTitle />,
-      headerLeft: (
-        <Icon
-          name="menu"
-          size={30}
-          type="MaterialCommunityIcons"
-          iconStyle={{ paddingLeft: 10 }}
-          onPress={() => {
-            navigation.openDrawer();
-          }}
-        />
-      ),
-      headerRight: (
-        <Icon
-          name="cart"
-          size={35}
-          type="evilicon"
-          iconStyle={{ paddingRight: 10 }}
-          onPress={() => {
-            navigation.navigate('Orders');
-          }}
-        />
-      ),
-    };
-  };
+  static navigationOptions = ({ navigation }) => ({
+    headerTitle: <ProductSearchTitle />,
+    headerLeft: (
+      <Icon
+        name="menu"
+        size={30}
+        type="MaterialCommunityIcons"
+        iconStyle={{ paddingLeft: 10 }}
+        onPress={() => {
+          navigation.openDrawer();
+        }}
+      />
+    ),
+    headerRight: (
+      <Icon
+        name="cart"
+        size={35}
+        type="evilicon"
+        iconStyle={{ paddingRight: 10 }}
+        onPress={() => {
+          navigation.navigate('Orders');
+        }}
+      />
+    ),
+  });
 
   constructor(props) {
     super(props);
@@ -277,22 +283,21 @@ export default class ProductsScreen extends Component {
 
   render() {
     const { navigation, screenProps } = this.props;
+    const { selectedCategory } = this.state;
 
     return (
       <ScrollView>
         <View style={styles.list}>
           <Picker
-            selectedValue={this.state.selectedCategory}
+            selectedValue={selectedCategory}
             style={{ marginLeft: 8, marginRight: 15 }}
-            onValueChange={(itemValue) =>
-              this.setState({
-                selectedCategory: itemValue,
-              })
-            }
+            onValueChange={(itemValue) => {
+              this.setState({ selectedCategory: itemValue });
+            }}
           >
-            {categories.map((category, i) => (
+            {categories.map(category => (
               <Picker.Item
-                key={i}
+                key={category.id}
                 label={category.label}
                 value={category.value}
               />
@@ -300,17 +305,17 @@ export default class ProductsScreen extends Component {
           </Picker>
         </View>
         <View style={{ marginTop: 10 }}>
-          {products.map((product, i) => (
+          {products.map(product => (
             <ProductItem
-              key={i}
+              key={product.id}
               product={product}
               navigation={navigation}
               handleAddOrderItem={() => {
                 screenProps.cart.onAddOrderItem({ code: product.code, qty: 1 });
                 Alert.alert(
                   'Success',
-                  'Successfully added ' + product.code + ' to the cart',
-                  [{ text: 'OK', onPress: () => console.log('OK Pressed') }],
+                  `Successfully added ${product.code} to the cart.`,
+                  [{ text: 'OK' }],
                   { cancelable: true },
                 );
               }}
