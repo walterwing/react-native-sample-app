@@ -55,18 +55,18 @@ const AppBottomTabNavigator = createBottomTabNavigator(
         const { routeName } = navigation.state;
         let iconName;
         if (routeName === 'Home') {
-          iconName = `ios-home${focused ? '' : '-outline'}`;
+          iconName = `home${focused ? '' : '-outline'}`;
         } else if (routeName === 'Products') {
-          iconName = `ios-barcode${focused ? '' : '-outline'}`;
+          iconName = `barcode${!focused ? '' : '-scan'}`;
         } else if (routeName === 'Orders') {
-          iconName = `ios-cart${focused ? '' : '-outline'}`;
+          iconName = `cart${focused ? '' : '-outline'}`;
         } else if (routeName === 'Accounts') {
-          iconName = `ios-ionitron${focused ? '' : '-outline'}`;
+          iconName = `account-box${focused ? '' : '-outline'}`;
         } else if (routeName === 'Payments') {
-          iconName = `ios-card${focused ? '' : '-outline'}`;
+          iconName = `credit-card${!focused ? '' : '-scan'}`;
         }
 
-        return <Icon type="ionicon" name={iconName} size={25} color={tintColor} />;
+        return <Icon type="material-community" name={iconName} size={25} color={tintColor} />;
       },
     }),
     tabBarOptions: {

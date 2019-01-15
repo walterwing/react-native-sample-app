@@ -169,9 +169,8 @@ const AppDrawerNavigator = createDrawerNavigator(
             }}
           >
             <Image
+              style={{ width: SCREEN_WIDTH * 0.57, height: 100, marginTop: 30 }}
               source={LOGO_IMAGE}
-              style={{ width: SCREEN_WIDTH * 0.57 }}
-              resizeMode="contain"
             />
           </View>
           <View style={{ marginLeft: 10 }}>
