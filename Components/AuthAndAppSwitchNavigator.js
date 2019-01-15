@@ -2,9 +2,7 @@ import { createStackNavigator, createSwitchNavigator, createAppContainer } from 
 
 import AuthLoadingScreen from './AuthLoadingScreen';
 import LoginScreen from './LoginScreen';
-import HomeScreen from './HomeScreen';
-import ProfileScreen from './ProfileScreen';
-import AccountNotificationScreen from './AccountNotificationScreen';
+import AppDrawerNavigator from './AppDrawerNavigator';
 
 const AuthStack = createStackNavigator(
   {
@@ -15,16 +13,10 @@ const AuthStack = createStackNavigator(
   },
 );
 
-const HomeStack = createStackNavigator({
-  Home: HomeScreen,
-  Profile: ProfileScreen,
-  AccountNotification: AccountNotificationScreen,
-});
-
 const AuthAndAppSwitch = createSwitchNavigator(
   {
     AuthLoading: AuthLoadingScreen,
-    App: HomeStack,
+    App: AppDrawerNavigator,
     Auth: AuthStack,
   },
   {

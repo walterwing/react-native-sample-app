@@ -119,7 +119,7 @@ const ProductSearchTitle = () => (
 
 const ProductTitle = ({ product, navigation }) => (
   <TouchableOpacity
-    onPress={() => navigation.navigate('ProductDetails', { code: product.code })}
+    onPress={() => navigation.navigate('ProductDetails', { productId: product.id })}
   >
     <Text
       style={{

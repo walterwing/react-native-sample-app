@@ -1,9 +1,16 @@
 import React from 'react';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
-import AppContainer from './Components/AuthAndAppSwitchNavigator';
+import rootReducer from './reducers/rootReducer';
+import WingApp from './AppWrapper';
+
+const store = createStore(rootReducer);
 
 const App = () => (
-  <AppContainer />
+  <Provider store={store}>
+    <WingApp />
+  </Provider>
 );
 
-export { App as default };
+export default App;
