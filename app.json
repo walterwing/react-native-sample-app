@@ -8,11 +8,11 @@
       "ios",
       "android"
     ],
-    "version": "1.0.0",
+    "version": "0.0.2",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/logo47.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/logo47.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -23,7 +23,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
-    }
+      "bundleIdentifier": "com.wing.wingapp"
+    },
+    "android": {
+      "package": "com.wing.wingapp"
+    },
+    "description": "A sample App developed using React Native, React Redux, React Navigation, and React Native Elements. ",
+    "githubUrl": "https://github.com/walterwing/react-native-sample-app"
   }
 }

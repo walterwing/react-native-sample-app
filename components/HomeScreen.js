@@ -3,7 +3,6 @@ import {
   ScrollView,
   View,
   StyleSheet,
-  AsyncStorage,
 } from 'react-native';
 import {
   Icon,
@@ -20,6 +19,8 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
 });
+
+const AVATAR_IMAGE = require('../assets/images/avatar.jpg');
 
 export default class HomeScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -41,10 +42,7 @@ export default class HomeScreen extends Component {
         size={40}
         type="evilicon"
         iconStyle={{ paddingRight: 10 }}
-        // TODO: update this function
         onPress={async () => {
-          // await AsyncStorage.clear();
-          // navigation.navigate('Auth');
           navigation.navigate('Profile');
         }}
       />
@@ -69,10 +67,8 @@ export default class HomeScreen extends Component {
               title="Welcome Back!"
               subtitle="Wing"
               leftAvatar={{
-                title: 'TW',
                 rounded: true,
-                size: 'small',
-                activeOpacity: 0.7,
+                source: AVATAR_IMAGE,
               }}
               titleStyle={{ fontWeight: 'bold' }}
               containerStyle={{

@@ -26,7 +26,7 @@ const cartReducer = (state = initialCartState, action) => {
     case cartTypes.DELETE: {
       return {
         ...state,
-        items: items.filter((item, i) => i !== payload),
+        items: items.filter(item => item.id !== payload),
       };
     }
     default:

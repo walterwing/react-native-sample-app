@@ -95,7 +95,7 @@ class ProductDetailsScreen extends React.Component {
           iconContainerStyle={{ marginLeft: 5 }}
           // onPress={() => console.log('hello add to cart')}
           onPress={() => {
-            screenProps.cart.onAddOrderItem({ code: product.code, qty: 1 });
+            screenProps.cart.onAddOrderItem({ id: product.id, qty: 1 });
             Alert.alert(
               'Success',
               `Successfully added ${product.code} to the cart.`,

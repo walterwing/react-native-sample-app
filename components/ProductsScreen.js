@@ -252,9 +252,9 @@ export default class ProductsScreen extends Component {
     headerTitle: <ProductSearchTitle />,
     headerLeft: (
       <Icon
-        name="menu"
+        name="navicon"
         size={30}
-        type="MaterialCommunityIcons"
+        type="evilicon"
         iconStyle={{ paddingLeft: 10 }}
         onPress={() => {
           navigation.openDrawer();
@@ -311,7 +311,7 @@ export default class ProductsScreen extends Component {
               product={product}
               navigation={navigation}
               handleAddOrderItem={() => {
-                screenProps.cart.onAddOrderItem({ code: product.code, qty: 1 });
+                screenProps.cart.onAddOrderItem({ id: product.id, qty: 1 });
                 Alert.alert(
                   'Success',
                   `Successfully added ${product.code} to the cart.`,
