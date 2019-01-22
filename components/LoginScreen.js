@@ -129,6 +129,9 @@ export default class LoginScreen extends Component {
                     this.setState({ emailValid: LoginScreen.validateEmail(email) });
                     this.passwordInput.focus();
                   }}
+                  onBlur={() => {
+                    this.setState({ emailValid: LoginScreen.validateEmail(email) });
+                  }}
                   blurOnSubmit={false}
                   placeholderTextColor="white"
                   errorStyle={{ textAlign: 'center', fontSize: 12 }}
