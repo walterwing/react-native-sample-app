@@ -13,6 +13,7 @@ import {
   ListItem,
   Input,
 } from 'react-native-elements';
+import { userDetails, accountNotifications } from './CommonConstants';
 
 const styles = StyleSheet.create({
   icon: {
@@ -74,71 +75,6 @@ const styles = StyleSheet.create({
 });
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
-
-const userDetails = {
-  contactName: 'Wing',
-  userName: 'Wing',
-  email: 'walterwing@hotmail.com',
-  businessPhone: '9999999999999',
-  mobilePhone: '',
-};
-
-const accountNotifications = [
-  {
-    id: 'Account 1',
-    paymentSMS: true,
-    paymentEmail: false,
-    invoiceSMS: false,
-    invoiceEmail: true,
-    orderSMS: false,
-    orderEmail: false,
-  },
-  {
-    id: 'Account 2',
-    paymentSMS: false,
-    paymentEmail: true,
-    invoiceSMS: false,
-    invoiceEmail: false,
-    orderSMS: false,
-    orderEmail: false,
-  },
-  {
-    id: 'Account 3',
-    paymentSMS: false,
-    paymentEmail: false,
-    invoiceSMS: false,
-    invoiceEmail: true,
-    orderSMS: false,
-    orderEmail: false,
-  },
-  {
-    id: 'Account 4',
-    paymentSMS: false,
-    paymentEmail: true,
-    invoiceSMS: false,
-    invoiceEmail: false,
-    orderSMS: false,
-    orderEmail: false,
-  },
-  {
-    id: 'Account 5',
-    paymentSMS: false,
-    paymentEmail: false,
-    invoiceSMS: false,
-    invoiceEmail: false,
-    orderSMS: false,
-    orderEmail: true,
-  },
-  {
-    id: 'Account 6',
-    paymentSMS: false,
-    paymentEmail: false,
-    invoiceSMS: true,
-    invoiceEmail: false,
-    orderSMS: false,
-    orderEmail: false,
-  },
-];
 
 export default class ProfileScreen extends Component {
   static navigationOptions = () => ({

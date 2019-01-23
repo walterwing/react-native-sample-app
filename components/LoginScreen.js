@@ -118,21 +118,16 @@ export default class LoginScreen extends Component {
                   value={email}
                   inputStyle={{ marginLeft: 10, color: 'white' }}
                   keyboardAppearance="light"
-                  placeholder="User Name"
+                  placeholder="Email"
                   autoFocus={false}
                   autoCapitalize="none"
                   autoCorrect={false}
                   keyboardType="email-address"
                   returnKeyType="next"
                   ref={(input) => { this.emailInput = input; }}
-                  onSubmitEditing={() => {
-                    this.setState({ emailValid: LoginScreen.validateEmail(email) });
-                    this.passwordInput.focus();
-                  }}
                   onBlur={() => {
                     this.setState({ emailValid: LoginScreen.validateEmail(email) });
                   }}
-                  blurOnSubmit={false}
                   placeholderTextColor="white"
                   errorStyle={{ textAlign: 'center', fontSize: 12 }}
                   errorMessage={

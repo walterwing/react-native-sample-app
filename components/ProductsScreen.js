@@ -16,7 +16,7 @@ import {
 } from 'react-native-elements';
 import NumericInput from 'react-native-numeric-input';
 
-import products from './CommonConstants';
+import { products, categories } from './CommonConstants';
 
 const styles = StyleSheet.create({
   list: {
@@ -37,59 +37,6 @@ const dummySearchBarProps = {
     );
   },
 };
-
-const categories = [
-  {
-    id: 0,
-    label: 'All Categories',
-    value: 'all',
-  },
-  {
-    id: 1,
-    label: 'Clothing',
-    value: 'clothing',
-  },
-  {
-    id: 2,
-    label: 'Garden',
-    value: 'garden',
-  },
-  {
-    id: 3,
-    label: 'Electronics',
-    value: 'electronics',
-  },
-  {
-    id: 4,
-    label: 'Sports',
-    value: 'sports',
-  },
-  {
-    id: 5,
-    label: 'Books',
-    value: 'books',
-  },
-  {
-    id: 6,
-    label: 'Music',
-    value: 'music',
-  },
-  {
-    id: 7,
-    label: 'Movies',
-    value: 'movies',
-  },
-  {
-    id: 8,
-    label: 'Food',
-    value: 'food',
-  },
-  {
-    id: 9,
-    label: 'Specials',
-    value: 'specials',
-  },
-];
 
 const ProductSearchIcon = () => (
   <Icon
