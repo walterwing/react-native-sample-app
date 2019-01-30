@@ -16,7 +16,7 @@ import {
 } from 'react-native-elements';
 import NumericInput from 'react-native-numeric-input';
 
-import { products, categories } from './CommonConstants';
+import { products, categories } from '../CommonConstants';
 
 const styles = StyleSheet.create({
   list: {

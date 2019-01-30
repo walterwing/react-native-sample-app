@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const AVATAR_IMAGE = require('../assets/images/avatar.jpg');
+const AVATAR_IMAGE = require('../../assets/images/avatar.jpg');
 
 export default class HomeScreen extends Component {
   static navigationOptions = ({ navigation }) => ({

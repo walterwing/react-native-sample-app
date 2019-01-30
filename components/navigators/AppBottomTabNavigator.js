@@ -5,16 +5,16 @@ import {
 } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
-import ProfileScreen from './ProfileScreen';
-import AccountNotificationScreen from './AccountNotificationScreen';
-import ProductsScreen from './ProductsScreen';
-import ProductDetailsScreen from './ProductDetailsScreen';
-import OrderDetailsScreen from './OrderDetailsScreen';
-import OrderItemDetailsScreen from './OrderItemDetailsScreen';
-import HomeScreen from './HomeScreen';
-import AccountsScreen from './AccountsScreen';
-import PaymentsScreen from './PaymentsScreen';
-import OrderManagementScreen from './OrderManagementScreen';
+import ProfileScreen from '../screens/ProfileScreen';
+import AccountNotificationScreen from '../screens/AccountNotificationScreen';
+import ProductsScreen from '../screens/ProductsScreen';
+import ProductDetailsScreen from '../screens/ProductDetailsScreen';
+import OrderDetailsScreen from '../screens/OrderDetailsScreen';
+import OrderItemDetailsScreen from '../screens/OrderItemDetailsScreen';
+import HomeScreen from '../screens/HomeScreen';
+import AccountsScreen from '../screens/AccountsScreen';
+import PaymentsScreen from '../screens/PaymentsScreen';
+import OrderManagementScreen from '../screens/OrderManagementScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,

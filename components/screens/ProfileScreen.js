@@ -13,7 +13,7 @@ import {
   ListItem,
   Input,
 } from 'react-native-elements';
-import { userDetails, accountNotifications } from './CommonConstants';
+import { userDetails, accountNotifications } from '../CommonConstants';
 
 const styles = StyleSheet.create({
   icon: {

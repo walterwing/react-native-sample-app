@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import AppContainer from './components/AuthAndAppSwitchNavigator';
+import AppContainer from './components/navigators/AuthAndAppSwitchNavigator';
 import { cartActionCreators } from './reducers/cartReducer';
 
 const mapStateToProps = state => ({

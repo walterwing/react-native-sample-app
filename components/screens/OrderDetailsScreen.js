@@ -15,7 +15,7 @@ import {
   Button,
 } from 'react-native-elements';
 import NumericInput from 'react-native-numeric-input';
-import { products } from './CommonConstants';
+import { products } from '../CommonConstants';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 import { ListItem } from 'react-native-elements';
 
-import { products } from './CommonConstants';
+import { products } from '../CommonConstants';
 
 class OrderItemDetailsScreen extends React.Component {
   static navigationOptions = () => ({

@@ -15,8 +15,8 @@ import {
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
-const BG_IMAGE = require('../assets/images/bg_screen.jpg');
-const LOGO_IMAGE = require('../assets/images/logo47.png');
+const BG_IMAGE = require('../../assets/images/bg_screen.jpg');
+const LOGO_IMAGE = require('../../assets/images/logo47.png');
 
 const styles = StyleSheet.create({
   container: {

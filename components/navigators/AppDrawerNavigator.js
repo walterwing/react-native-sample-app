@@ -13,13 +13,13 @@ import {
 import { Icon, Button } from 'react-native-elements';
 
 import AppBottomTabNavigator from './AppBottomTabNavigator';
-import ReportsScreen from './ReportsScreen';
-import UserSetupScreen from './UserSetupScreen';
-import InfoScreen from './InfoScreen';
-import SettingsScreen from './SettingsScreen';
+import ReportsScreen from '../screens/ReportsScreen';
+import UserSetupScreen from '../screens/UserSetupScreen';
+import InfoScreen from '../screens/InfoScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
-const LOGO_IMAGE = require('../assets/images/logo47.png');
+const LOGO_IMAGE = require('../../assets/images/logo47.png');
 
 const ProxyBottomTabNavigator = createStackNavigator(
   {
